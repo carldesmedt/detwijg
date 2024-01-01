@@ -59,4 +59,5 @@ Route::middleware([
 Route::get('/', [EventController::class, 'index'])->name('home');
 Route::get('{event:slug}', [EventController::class, 'show']);
 Route::post('/subscription', [SubscriptionController::class, 'store'])->name('subscription.store');
+Route::get('/confirmed/{subscription:id}/{event:slug}', [SubscriptionController::class, 'show'])->name('confirmed');
 

@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Models\Shift;
+use App\Models\Event;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SubscriptionReceived;
+use Inertia\Inertia;
 
 
 class SubscriptionController extends Controller
@@ -54,14 +56,21 @@ class SubscriptionController extends Controller
         $event = Shift::find($sub->shift_id)->event;
 
         Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event));
+        return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id]);
     }
     
     /**
      * Display the specified resource.
      */
-    public function show(Subscription $subscription)
+    public function show(Subscription $subscription, string $event)
     {
-        //
+        $event = Event::find($event);
+
+
+        return Inertia::render('Subscription/Confirmed', [
+            'event' => $event, 
+            'subscription' => $subscription,
+         ]);
     }
 
     /**
