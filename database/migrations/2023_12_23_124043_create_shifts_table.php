@@ -16,8 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('event_id');
             $table->date('date');
-            $table->timestamp('start')->nullable();
-            $table->timestamp('end')->nullable();
+            $table->time('start')->nullable();
+            $table->time('end')->nullable();
             $table->boolean('subscription_required');
             $table->unsignedBigInteger('subscription_max')->nullable();
             $table->float('subscription_fee')->nullable();
