@@ -72,6 +72,7 @@ class SubscriptionController extends Controller
             'event' => $event, 
             'subscription' => $subscription,
          ]);
+         //this is an update
     }
 
     /**
