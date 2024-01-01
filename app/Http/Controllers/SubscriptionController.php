@@ -66,6 +66,7 @@ class SubscriptionController extends Controller
     {
         $event = Event::find($event);
 
+        //heavenly tested
 
         return Inertia::render('Subscription/Confirmed', [
             'event' => $event, 
