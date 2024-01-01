@@ -39,12 +39,12 @@ const props = defineProps({
                                 <br>Detail van uw reservatie en betalingsgegevens vindt u hieronder.</p>
 
                             <ul class="mb-2">
-                                <li>Naam: <span class="font-bold">{{subscription.name}}</span></li>
-                                <li>Ploegnaam: <span class="font-bold">{{subscription.team}}</span></li>
-                                <li>E-mail: <span class="font-bold">{{subscription.email}}</span></li>
-                                <li>Bedrag inschrijving: <span class="font-bold">{{subscription.fee}}</span> euro</li>
-                                <li>Rekeningnummer: <span class="font-bold">BE29 7340 4090 0764</span></li>
-                                <li>Referentie: <span class="font-bold">{{subscription.reference}}</span></li>
+                                <li>Naam: <span>{{subscription.name}}</span></li>
+                                <li>Ploegnaam: <span>{{subscription.team}}</span></li>
+                                <li>E-mail: <span>{{subscription.email}}</span></li>
+                                <li>Bedrag inschrijving: <span>{{subscription.fee}}</span> euro</li>
+                                <li>Rekeningnummer: <span>BE29 7340 4090 0764</span></li>
+                                <li>Referentie: <span>{{subscription.reference}}</span></li>
                                 
                             </ul>
                             <p class="mb-2">Wij kijken uit naar uw deelname</p>
