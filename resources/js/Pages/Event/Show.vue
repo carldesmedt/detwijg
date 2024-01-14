@@ -89,7 +89,7 @@ const create_subscription = () => {
                             </p>
                             <p v-if="subscription.fee" class="mt-6 text-gray-500 leading-relaxed text-sm">
                                 Dit evenement omvat een betalende inschrijving.<br>
-                                Na het invullen van het inschrijvingsformulier reserveert u een plaats en ontvangt u een e-mail met de betalingsgegevens. Zodra wij uw betaling ontvangen hebben wordt de plaats definitief toegekent. 
+                                Na het invullen van het inschrijvingsformulier reserveert u een plaats en ontvangt u een e-mail met de betalingsgegevens. Zodra wij uw betaling ontvangen hebben wordt de plaats definitief toegekend. 
                             </p>
                         </div>
                         <div v-if="subscription.required" class="bg-gray-200 bg-opacity-25 lg:p-8 lg:px-32">
