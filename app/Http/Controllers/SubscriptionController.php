@@ -56,6 +56,7 @@ class SubscriptionController extends Controller
         $event = Shift::find($sub->shift_id)->event;
      
         $max_inschr = Shift::find($sub->shift_id)->subscription_max;
+        $free = $max_inschr - Subscription::where('shift_id', $sub->shift_id);
         Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event));
         return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id]);
     }
