@@ -59,7 +59,10 @@ class SubscriptionController extends Controller
         $free = $max_inschr - Subscription::where('shift_id', $sub->shift_id)->count();
         if($free>0){
             Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event));
-        return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id]);
+        return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id, 'free' => $free]);
+        }
+        else{
+            return redirect()->route('onhold',['subscription' => $sub->id, 'event' => $event->id])
         }
         
     }
@@ -67,7 +70,7 @@ class SubscriptionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Subscription $subscription, string $event)
+    public function show(Subscription $subscription, string $event, int $free)
     {
         $event = Event::find($event);
 
@@ -76,6 +79,7 @@ class SubscriptionController extends Controller
         return Inertia::render('Subscription/Confirmed', [
             'event' => $event, 
             'subscription' => $subscription,
+            'free' =>$free
          ]);
          //this is an update
     }
