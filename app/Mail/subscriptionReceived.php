@@ -44,7 +44,7 @@ class subscriptionReceived extends Mailable
     {
         if($free>=0){
             return new Content(
-                view: 'emails.subscription-complete',
+                view: 'emails.subscription-onhold',
             );
         }
         else{
