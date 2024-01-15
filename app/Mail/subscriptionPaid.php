@@ -21,7 +21,6 @@ class subscriptionReceived extends Mailable
     public function __construct(
         public Subscription $sub,
         public Event $event,
-        public Boolean $volzet,
     )
     {
         
@@ -42,17 +41,9 @@ class subscriptionReceived extends Mailable
      */
     public function content(): Content
     {
-        if(!$volzet){
-            return new Content(
-                view: 'emails.subscription-complete',
-            );
-        }
-        else{
-            return new Content(
-                view: 'emails.subscription-on-hold',
-            );
-        }
-        
+        return new Content(
+            view: 'emails.subscription-complete',
+        );
     }
 
     /**

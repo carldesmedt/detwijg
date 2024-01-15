@@ -84,7 +84,7 @@ const create_subscription = () => {
                                 <div v-html="event.description"></div> 
                             </p>
                             <p v-if="shifts.free_space == 0" class="mt-6 text-gray-500 leading-relaxed text-sm">
-                                <span class="font-bold">Let op: </span>De plaatsen zijn beperkt. Er zijn momenteel geen vrije plaatsen.<br>
+                                <span class="font-bold text-red-500">Let op: </span>De plaatsen zijn beperkt. Er zijn momenteel geen vrije plaatsen.<br>
                                 Je kan wel nog inschrijven. Wij contacteren je mocht er alsnog een plaats vrijkomen. 
                             </p>
                             <p v-if="subscription.fee" class="mt-6 text-gray-500 leading-relaxed text-sm">
