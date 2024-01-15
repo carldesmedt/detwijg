@@ -33,7 +33,7 @@ class subscriptionOnHold extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Inschrijving geregistreerd',
+            subject: 'Inschrijving op reservelijst',
         );
     }
 
