@@ -47,6 +47,11 @@ class subscriptionReceived extends Mailable
                 view: 'emails.subscription-complete',
             );
         }
+        else{
+            return new Content(
+                view: 'emails.subscription-on-hold',
+            );
+        }
         
     }
 

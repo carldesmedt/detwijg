@@ -8,6 +8,7 @@ use App\Models\Shift;
 use App\Models\Event;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SubscriptionReceived;
+use App\Mail\SubscriptionOnHold;
 use Inertia\Inertia;
 
 
@@ -57,12 +58,11 @@ class SubscriptionController extends Controller
      
         $max_inschr = Shift::find($sub->shift_id)->subscription_max;
         $free = $max_inschr - Subscription::where('shift_id', $sub->shift_id)->count();
-        if($free>0){
-            Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event, $free));
+        
+        Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event, $free));
         return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id, 'free' => $free]);
-        }
-        else{
-            
+        if($free>0){
+           $sub->status = 'on hold';
         }
         
     }
