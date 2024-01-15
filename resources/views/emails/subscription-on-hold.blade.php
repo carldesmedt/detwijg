@@ -1,7 +1,7 @@
 <p>Beste {{ $sub->name}}, </p>
-<p> Wij danken u voor uw interesse voor {{ $event->name }} . <br>
-De plaatsen zijn beperkt en intussen is de {{ $event->name }} volzet</p>
-<p> Mocht er alsnog een plaats vrijkomen zullen wij u contacteren. Hieronder vind je een opsomming van jouw gegevens.</p>
+<p> Wij danken je voor jouw interesse voor {{ $event->name }} . <br>
+De plaatsen zijn echter beperkt en intussen is de {{ $event->name }} volzet</p>
+<p> Jouw inschrijving wer genoteerd op de reservelijst. Mocht er alsnog een plaats vrijkomen zullen wij jou contacteren. Hieronder vind je een opsomming van jouw gegevens.</p>
 
 <ul>
     <li>Naam: <span @style(['font-weight: bold'])>{{$sub->name}}</span></li>
@@ -11,6 +11,6 @@ De plaatsen zijn beperkt en intussen is de {{ $event->name }} volzet</p>
     
     
 </ul>
-<p>Wij kijken uit naar uw deelname</p>
+
 <p>mvg,<br>
 Ouderraad De Twijg</p>

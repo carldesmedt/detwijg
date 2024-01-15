@@ -8,6 +8,7 @@ use App\Models\Shift;
 use App\Models\Event;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SubscriptionReceived;
+use App\Mail\SubscriptionOnHold;
 use Inertia\Inertia;
 
 
@@ -54,8 +55,17 @@ class SubscriptionController extends Controller
         $sub->save();
         
         $event = Shift::find($sub->shift_id)->event;
-
-        Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event));
+     
+        $max_subscr = Shift::find($sub->shift_id)->subscription_max;
+        $sub_count = Subscription::where('shift_id', $sub->shift_id);
+        if(($max_subscr-$sub_count)>0){
+            Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event));
+        }
+        else{
+            $sub->status = 'On hold';
+            Mail::to($sub->email)->send(new SubscriptionOnHold($sub, $event));
+        }
+        
         return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id]);
     }
     

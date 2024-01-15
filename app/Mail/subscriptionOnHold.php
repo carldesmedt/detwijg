@@ -32,7 +32,7 @@ class subscriptionReceived extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Inschrijving bevestigd',
+            subject: 'Inschrijving geregistreerd',
         );
     }
 
@@ -42,7 +42,7 @@ class subscriptionReceived extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.subscription-complete',
+            view: 'emails.subscription-on-hold',
         );
     }
 
