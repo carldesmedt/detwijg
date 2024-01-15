@@ -60,5 +60,4 @@ Route::get('/', [EventController::class, 'index'])->name('home');
 Route::get('{event:slug}', [EventController::class, 'show']);
 Route::post('/subscription', [SubscriptionController::class, 'store'])->name('subscription.store');
 Route::get('/confirmed/{subscription:id}/{event:slug}/{free:free}', [SubscriptionController::class, 'show'])->name('confirmed');
-Route::get('/onhold/{subscription:id}/{event:slug}', [SubscriptionController::class, 'show'])->name('onhold');
 

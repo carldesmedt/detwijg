@@ -61,9 +61,7 @@ class SubscriptionController extends Controller
             Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event));
         return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id, 'free' => $free]);
         }
-        else{
-            return redirect()->route('onhold',['subscription' => $sub->id, 'event' => $event->id])
-        }
+        
         
     }
     
