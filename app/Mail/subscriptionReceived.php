@@ -44,7 +44,7 @@ class subscriptionReceived extends Mailable
     {
         
             return new Content(
-                view: 'emails.subscription-complete',
+                view: 'emails.subscription-complet',
             );
         
         
