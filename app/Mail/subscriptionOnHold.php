@@ -43,7 +43,7 @@ class subscriptionReceived extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.subscription-on-hold',
+            view: 'emails.subscription-onhold',
         );
     }
 
