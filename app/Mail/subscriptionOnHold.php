@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use App\Models\Subscription;
 use App\Models\Event;
 
-class subscriptionReceived extends Mailable
+class subscriptionOnHold extends Mailable
 {
     use Queueable, SerializesModels;
 
