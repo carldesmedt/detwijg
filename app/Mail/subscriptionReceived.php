@@ -42,16 +42,12 @@ class subscriptionReceived extends Mailable
      */
     public function content(): Content
     {
-        if($free>=0){
+        
             return new Content(
-                view: 'emails.subscription-onhold',
+                view: 'emails.subscription-complete',
             );
-        }
-        else{
-            return new Content(
-                view: 'emails.subscription-onhold',
-            );
-        }
+        
+        
         
     }
 
