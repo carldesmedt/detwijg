@@ -59,10 +59,15 @@ class SubscriptionController extends Controller
         $max_inschr = Shift::find($sub->shift_id)->subscription_max;
         $free = $max_inschr - Subscription::where('shift_id', $sub->shift_id)->count();
         
-        Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event, $free));
-        return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id, 'free' => $free]);
         if($free<0){
            $sub->status = 'on hold';
+           $sub->save();
+           Mail::to($sub->email)->send(new SubscriptionOnHold($sub, $event, $free));
+            return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id, 'free' => $free]);
+        }
+        else{
+            Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event, $free));
+            return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id, 'free' => $free]);
         }
         
     }
