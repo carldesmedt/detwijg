@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use App\Models\Subscription;
 use App\Models\Event;
 
-class SubscriptionOnHold extends Mailable
+class subscriptionOnHold extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -21,7 +21,7 @@ class SubscriptionOnHold extends Mailable
     public function __construct(
         public Subscription $sub,
         public Event $event,
-        public int $free
+        public int $free,
     )
     {
         
