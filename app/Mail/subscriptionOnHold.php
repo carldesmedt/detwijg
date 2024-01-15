@@ -21,6 +21,7 @@ class subscriptionReceived extends Mailable
     public function __construct(
         public Subscription $sub,
         public Event $event,
+        public int $free
     )
     {
         
