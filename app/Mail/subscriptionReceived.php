@@ -21,6 +21,7 @@ class subscriptionReceived extends Mailable
     public function __construct(
         public Subscription $sub,
         public Event $event,
+        public int $free,
     )
     {
         
@@ -41,9 +42,12 @@ class subscriptionReceived extends Mailable
      */
     public function content(): Content
     {
-        return new Content(
-            view: 'emails.subscription-complete',
-        );
+        if($free>=0){
+            return new Content(
+                view: 'emails.subscription-complete',
+            );
+        }
+        
     }
 
     /**

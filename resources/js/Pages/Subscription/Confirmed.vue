@@ -7,6 +7,7 @@ import OdrBanner from '@/ComponentsOdrTwijg/OdrBanner.vue';
 const props = defineProps({
     event: Object,
     subscription: Object,
+    free: Number,
 })
 
 </script>
