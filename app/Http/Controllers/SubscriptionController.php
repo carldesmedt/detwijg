@@ -55,16 +55,8 @@ class SubscriptionController extends Controller
         
         $event = Shift::find($sub->shift_id)->event;
 
-        $max = Shift::find($sub->shift_id)->subscription_max;
-        $totalSubs = Subription::where('shift_id',$sub->shift_id)->count();
-        $volzet = false;
-        if($totalSubs > $max){
-            $volzet = true;
-        }
-            
-        Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event, $volzet));
+        Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event));
         return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id]);
-        
     }
     
     /**
