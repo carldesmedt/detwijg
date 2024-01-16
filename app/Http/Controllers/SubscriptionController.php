@@ -93,6 +93,7 @@ class SubscriptionController extends Controller
      */
     public function onhold(Subscription $subscription, string $event, int $free)
     {
+        $event = Event::find($event);
         return Inertia::render('Subscription/Onhold', [
             'event' => $event, 
             'subscription' => $subscription,
