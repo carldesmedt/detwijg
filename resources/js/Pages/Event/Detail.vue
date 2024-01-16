@@ -185,7 +185,7 @@ const paidsubs = ref([]);
         </template>
         <template #footer>
             <div class="align-right">
-                <PrimaryButton @click.prevent="sendPay, modal.pay=false">Save</PrimaryButton>
+                <PrimaryButton @click.prevent="sendPay">Save</PrimaryButton>
             </div>
         </template>
     </DialogModal>
