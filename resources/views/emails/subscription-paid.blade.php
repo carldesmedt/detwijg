@@ -1,7 +1,7 @@
 <p>Beste {{ $sub->name}}, </p>
 <p> Wij hebben jouw betaling ontvangen en bevestigen de inschrijving voor {{ $event->name }} . <br>
-Wij hebben alvast een plaats voor u gereserveerd.</p>
-<p> Detail van uw reservatie en betalingsgegevens vindt u hieronder.</p>
+Wij hebben alvast een plaats voor jou gereserveerd.</p>
+<p> Detail van je reservatie vind je hieronder</p>
 
 <ul>
     <li>Naam: <span @style(['font-weight: bold'])>{{$sub->name}}</span></li>
