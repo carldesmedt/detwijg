@@ -55,6 +55,7 @@ Route::middleware([
     Route::get('/axios', function (Request $request) {
         return ['test' => 'tester'];
     });
+    Route::post('/paid', [SubscriptionController::class, 'paid'])->name('subscription.paid');
 });
 Route::get('/', [EventController::class, 'index'])->name('home');
 Route::get('{event:slug}', [EventController::class, 'show']);

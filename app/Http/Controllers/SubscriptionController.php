@@ -9,6 +9,7 @@ use App\Models\Event;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SubscriptionReceived;
 use App\Mail\SubscriptionOnHold;
+use App\Mail\SubscriptionPaid;
 use Inertia\Inertia;
 
 
@@ -104,9 +105,21 @@ class SubscriptionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Subscription $subscription)
-    {
-        //
+    public function paid(Request $request)
+    {   
+        if($request->paidsubs== []){
+            return redirect()->route('mgmdetail', 'quiz-2024');
+        }
+        foreach($request->paidsubs as $payed){
+            
+            $subscription = Subscription::find($payed);
+            $event = $subscription->shift->event;
+            $subscription->status = "paid";
+            $subscription->save();
+            Mail::to($subscription->email)->send(new SubscriptionPaid($subscription, $event));
+            
+        }
+        return redirect()->route('mgmdetail', $event->slug);
     }
 
     /**

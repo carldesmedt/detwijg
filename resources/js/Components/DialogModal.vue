@@ -30,12 +30,16 @@ const close = () => {
         :closeable="closeable"
         @close="close"
     >
-        <div class="px-6 py-4">
-            <div class="text-lg font-medium text-gray-900">
-                <slot name="title" />
+        <div class="px-6 py-4  divide-y-2">
+            <div class="text-lg font-medium text-gray-900 ">
+                <div class="flex justify-between">
+                    <slot name="title" />
+                    <div @click="close" class="text-2xl text-groen-twijg hover:cursor-pointer">x</div>
+                </div>
+                    
             </div>
 
-            <div class="mt-4 text-sm text-gray-600">
+            <div class="mt-4 pt-4 text-sm text-gray-600">
                 <slot name="content" />
             </div>
         </div>

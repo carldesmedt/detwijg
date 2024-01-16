@@ -79,18 +79,7 @@ const myaxios = () => {
                         </div>
                         
                     </div>
-                    <div class="flex justify-between">
-                        <div class="font-bold text-groen-twijg">parameters:</div>
-                        <div>
-                            <div v-for="(value, key) in  param "  class="grid grid-cols-2 gap-2">
-                                
-                                    <div>{{ key }}:</div>
-                                    <div>{{ value }}</div>
-                            
-                                
-                            </div>
-                            </div>
-                    </div>
+                    
                 </div>
                 <div>
                     Aantal inschrijvingen : {{ subscriptions.length }}
@@ -109,16 +98,17 @@ const myaxios = () => {
                     
                 />
             
-                    <div class="grid grid-cols-6 font-bold text-groen-twijg text-center border-b mb-2">
+                    <div class="grid grid-cols-7 font-bold text-groen-twijg text-center border-b mb-2">
                         <div>Team</div>
-                        <div>Team</div>
-                        <div>Team</div>
-                        <div>Team</div>
-                        <div>Team</div>
-                        <div>Team</div>
+                        <div>Kapitein</div>
+                        <div>Email</div>
+                        <div>Telefoon</div>
+                        <div>Bedrag</div>
+                        <div>Referentie</div>
+                        <div>Status</div>
                     </div>
                     <div >
-                        <p v-for="detail in filtert" class="text-center text-xs grid grid-cols-6 gap-4">
+                        <p v-for="detail in filtert" class="text-center text-xs grid grid-cols-7 gap-2">
                             <div v-if="param.subTeam">{{ detail.team }}</div>
                             <div v-if="param.subName">{{ detail.name }}</div>
                             <div v-if="param.subEmail">{{ detail.email }}</div>
@@ -127,24 +117,14 @@ const myaxios = () => {
                             <div v-if="param.subContact">{{ detail.referenced_contact }}</div>
                             <div v-if="param.subClass">{{ detail.class }}</div>
                             <div>{{ detail.fee }}</div>
-                            <div>{{ detail.reference }} - </div>
+                            <div>{{ detail.reference }}</div>
                             <select :id="'status'+detail.id" v-model="detail.status" :value="detail.status" class="text-xs">
                                 <option value="reserved">Gereserveerd</option><option value="paid">Betaald</option>
                             </select> 
                             
                         </p>
-                    </div>
-              
-                    
+                    </div>   
             </div>
-            
-            
-
-            
-
-            
-
-            
         </div>
     </div>
 </template>

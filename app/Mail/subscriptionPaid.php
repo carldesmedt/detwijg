@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use App\Models\Subscription;
 use App\Models\Event;
 
-class subscriptionReceived extends Mailable
+class SubscriptionPaid extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -42,7 +42,7 @@ class subscriptionReceived extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.subscription-complete',
+            view: 'emails.subscription-paid',
         );
     }
 
