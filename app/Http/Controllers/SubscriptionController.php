@@ -119,7 +119,7 @@ class SubscriptionController extends Controller
             Mail::to('carl.desmedt@icloud.com')->send(new SubscriptionPaid($subscription, $event));
             
         }
-        return redirect()->route('mgmdetail', $event->slug);
+        return redirect()->route('mgmdetail', 'quiz-2024');
     }
 
     /**

@@ -22,16 +22,19 @@ const payform = useForm({
     paidsubs: [],
 });
 const sendPay = () => {
+    
     payform.post(route('subscription.paid'),{
-        preserveScroll: true,
         onSuccess: () => payform.reset(),
+        onFinish: () => modal.value.pay = false,
     });
+    
+    
 }
 const subs = ref(props.subscriptions);
 let search = ref('');
 const query = ref(subs.value.filter((sub) => sub.reference));
 const filtered = computed(() => {
-    return query.value.filter((sub) => sub.reference.startsWith(search.value)|| sub.name.startsWith(search.value))
+    return query.value.filter((sub) => sub.status!= 'paid' && (sub.reference.startsWith(search.value)|| sub.name.startsWith(search.value)))
 });
 
 const paidsubs = ref([]);
@@ -154,7 +157,7 @@ const paidsubs = ref([]);
             </div>
         </div>
     </AppLayout>
-    <DialogModal :show="modal.pay" @close="modal.pay = false" @submitted="modal.pay = false">
+    <DialogModal :show="modal.pay" @close="modal.pay = false" >
         <template #title>
                 <div class="text-2xl text-groen-twijg">Betaling registreren</div>
         </template>
