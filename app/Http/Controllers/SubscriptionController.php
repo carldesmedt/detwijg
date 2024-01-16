@@ -63,13 +63,12 @@ class SubscriptionController extends Controller
            $sub->status = 'on hold';
            $sub->save();
             Mail::to($sub->email)->send(new SubscriptionOnHold($sub, $event, $free));
-            return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id, 'free' => $free]);
+            return redirect()->route('onhold', ['subscription' => $sub->id, 'event' => $event->id, 'free' => $free]);
         }
         else{
             Mail::to($sub->email)->send(new SubscriptionReceived($sub, $event, $free));
             return redirect()->route('confirmed', ['subscription' => $sub->id, 'event' => $event->id, 'free' => $free]);
         }
-        
     }
     
     /**
@@ -92,9 +91,13 @@ class SubscriptionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Subscription $subscription)
+    public function onhold(Subscription $subscription, string $event, int $free)
     {
-        //
+        return Inertia::render('Subscription/Onhold', [
+            'event' => $event, 
+            'subscription' => $subscription,
+            'free' =>$free
+         ]);
     }
 
     /**
