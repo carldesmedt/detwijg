@@ -116,7 +116,7 @@ class SubscriptionController extends Controller
             $event = $subscription->shift->event;
             $subscription->status = "paid";
             $subscription->save();
-            Mail::to($subscription->email)->send(new SubscriptionPaid($subscription, $event));
+            Mail::to('carl.desmedt@icloud.com')->send(new SubscriptionPaid($subscription, $event));
             
         }
         return redirect()->route('mgmdetail', $event->slug);
