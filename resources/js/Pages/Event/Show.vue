@@ -61,7 +61,7 @@ const create_subscription = () => {
                                     <div v-for="(shift, index) in shifts" class="text-sm text-gray-600">Vrije plaatsen: {{ shift.free_space }} ({{ shift.start }} - {{ shift.end }})</div>
                                 </div>
                                 <div v-else-if="shifts.length == 1">
-                                    <div class="font-normal text-sm text-gray-600">Vrije plaatsen: <span v-if="shifts[0].free_space > 0">{{ shifts[0].free_space }}</span><span v-else class="text-red-500">volzet</span></div>
+                                    <div class="font-normal text-sm text-gray-600">Vrije plaatsen: <span v-if="shifts[0].free_space > 0">{{ shifts[0].free_space }}</span><span v-else class="text-red-500">wachtlijst</span></div>
                                 </div>
 
 
